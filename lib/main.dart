@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:coolmovies/app/core/routes/routes.dart';
-import 'package:coolmovies/app/presentation/pages/movies_page.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
