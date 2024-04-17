@@ -1,4 +1,3 @@
-import 'package:coolmovies/app/features/movies_list/infra/repositories/movies_repository_impl.dart';
 import 'package:coolmovies/app/features/movies_list/presentation/blocs/movies/movie_bloc.dart';
 import 'package:coolmovies/app/features/movies_list/presentation/blocs/movies/movie_event.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +9,11 @@ class MoviesPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = useState<MovieBloc>(MovieBloc(MoviesRepositoryImpl()));
+    final bloc = movieBlocInstance;
 
     useEffect(() {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        bloc.value.add(MovieEvent.movieFetched());
+        bloc.add(MovieEvent.movieFetched());
       });
       return null;
     }, const []);
@@ -23,7 +22,7 @@ class MoviesPage extends HookWidget {
           title: const Text('coolmovies'),
         ),
         body: BlocBuilder<MovieBloc, MovieState>(
-          bloc: bloc.value,
+          bloc: bloc,
           builder: (context, state) {
             return state.maybeWhen(
               loadSuccess: (data) => ListView(
