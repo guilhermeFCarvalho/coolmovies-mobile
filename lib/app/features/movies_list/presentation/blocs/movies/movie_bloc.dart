@@ -14,9 +14,7 @@ typedef MovieState = CommonState<Failure, List<MovieEntity>>;
 class MovieBloc extends Bloc<MovieEvent, MovieState> {
   final MoviesRepository _repository;
 
-  MovieBloc(MoviesRepository repository)
-      : _repository = repository,
-        super(const MovieState.loadInProgress()) {
+  MovieBloc(this._repository) : super(const MovieState.loadInProgress()) {
     on<MovieEvent>((event, emit) async {
       await event.when<Future<void>>(
         movieFetched: () => onMoviesFetched(emit),

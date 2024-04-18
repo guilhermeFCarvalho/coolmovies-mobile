@@ -11,6 +11,7 @@ void main() async {
         : 'http://localhost:5001/graphql',
   );
 
+
   ValueNotifier<GraphQLClient> client = ValueNotifier(
     GraphQLClient(
       link: httpLink,
