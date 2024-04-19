@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:coolmovies/app/core/routes/routes.dart';
+import 'package:coolmovies/app/core/shared/style/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 
@@ -10,7 +11,6 @@ void main() async {
         ? 'http://10.0.2.2:5001/graphql'
         : 'http://localhost:5001/graphql',
   );
-
 
   ValueNotifier<GraphQLClient> client = ValueNotifier(
     GraphQLClient(
@@ -35,8 +35,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       title: 'coolmovies',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        useMaterial3: true,
+        colorScheme: lightColorScheme,
       ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: darkColorScheme,
+      ), 
+      themeMode: ThemeMode.dark,
       routerConfig: routes,
     );
   }

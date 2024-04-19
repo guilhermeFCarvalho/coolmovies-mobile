@@ -2,10 +2,10 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:coolmovies/app/core/failures/failure.dart';
 import 'package:coolmovies/app/core/shared/common/common_state.dart';
-import 'package:coolmovies/app/features/movies_list/domain/entities/movies/movie_entity.dart';
-import 'package:coolmovies/app/features/movies_list/domain/repositories/movies_repository.dart';
-import 'package:coolmovies/app/features/movies_list/infra/repositories/movies_repository_impl.dart';
-import 'package:coolmovies/app/features/movies_list/presentation/blocs/movies/movie_event.dart';
+import 'package:coolmovies/app/features/movies/domain/entities/movies/movie_entity.dart';
+import 'package:coolmovies/app/features/movies/domain/repositories/movies_repository.dart';
+import 'package:coolmovies/app/features/movies/infra/repositories/movies_repository_impl.dart';
+import 'package:coolmovies/app/features/movies/presentation/blocs/movies/movie_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 

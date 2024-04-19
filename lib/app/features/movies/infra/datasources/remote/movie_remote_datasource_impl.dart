@@ -1,8 +1,8 @@
 import 'package:coolmovies/app/core/failures/failure.dart';
 import 'package:coolmovies/app/core/http/http_client.dart';
-import 'package:coolmovies/app/features/movies_list/domain/datasources/remote/movie_remote_datasource.dart';
-import 'package:coolmovies/app/features/movies_list/domain/entities/movies/movie_entity.dart';
-import 'package:coolmovies/app/features/movies_list/infra/dtos/movie_dto.dart';
+import 'package:coolmovies/app/features/movies/domain/datasources/remote/movie_remote_datasource.dart';
+import 'package:coolmovies/app/features/movies/domain/entities/movies/movie_entity.dart';
+import 'package:coolmovies/app/features/movies/infra/dtos/movie_dto.dart';
 import 'package:dartz/dartz.dart';
 import 'package:get_it/get_it.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
@@ -22,16 +22,22 @@ class MovieRemoteDatasourceImpl implements MovieRemoteDatasource {
               nodes {
                 id
                 imgUrl
-                movieDirectorId
-                userCreatorId
+              movieDirectorByMovieDirectorId{
+                name
+              }
                 title
                 releaseDate
-                nodeId
-                userByUserCreatorId {
-                  id
-                  name
-                  nodeId
+              movieReviewsByMovieId {
+                nodes {
+                  body
+                  rating
+                  title
+                  userByUserReviewerId {
+                    name
+                  }
                 }
+              }
+                
               }
             }
           }
