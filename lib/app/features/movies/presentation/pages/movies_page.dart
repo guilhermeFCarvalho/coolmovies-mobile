@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MoviesPage extends HookWidget {
   const MoviesPage({super.key});
@@ -25,20 +26,29 @@ class MoviesPage extends HookWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('coolmovies'),
+        title: Text(
+          'CoolMovies',
+          style: GoogleFonts.bebasNeue(fontSize: 32),
+        ),
       ),
       body: BlocBuilder<MovieBloc, MovieState>(
         bloc: bloc,
         builder: (_, state) {
           return state.maybeWhen(
             loadSuccess: (data) {
+              final list = [
+                ...data,
+                ...data.reversed,
+                ...data,
+                ...data.reversed
+              ];
               return CustomScrollView(
                 slivers: [
                   SliverPadding(
                     padding: const EdgeInsets.symmetric(vertical: 0),
                     sliver: SliverGrid.count(
                       crossAxisCount: 2,
-                      children: data
+                      children: list
                           .map(
                             (movie) => MovieCardWidget(
                               movieEntity: movie,
