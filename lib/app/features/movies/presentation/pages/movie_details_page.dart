@@ -36,7 +36,7 @@ class MovieDetailsPage extends StatelessWidget {
                     ),
                     children: [
                       TextSpan(
-                        text: '  $releaseYear',
+                        text: ' $releaseYear',
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,

@@ -1,7 +1,5 @@
 import 'package:coolmovies/app/features/movies/domain/entities/movies/movie_entity.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class MovieCardWidget extends StatelessWidget {
   final MovieEntity movieEntity;
